@@ -178,20 +178,63 @@ namespace FindImageInputAndExportNewFolder
         {
             selectedRow = dgvImport.CurrentRow;
             if (selectedRow == null) { return; }
-            if (selectedRow != null)
+
+            string exportFolderPath = txtExport.Text;
+            if (string.IsNullOrEmpty(exportFolderPath))
             {
-                // Lấy dữ liệu từ dòng đã chọn
-                string fileName = selectedRow.Cells[0].Value.ToString();
-                if (!string.IsNullOrEmpty(fileName))
-                {
-                    FileName file = new FileName { Name = fileName };
-                    jpgFiles2.Add(file);
-                    showTable2(jpgFiles2);
-                    dgvImport.Rows.Remove(selectedRow);
-                    jpgFiles.RemoveAll(x => x.Name == fileName);
-                }
+                MessageBox.Show("Chọn folder cần được copy!");
             }
-            txtSearch.Text = string.Empty;
+            else
+            {
+                try
+                {
+                    if (selectedRow != null)
+                    {
+                        // Lấy dữ liệu từ dòng đã chọn
+                        string fileName = selectedRow.Cells[0].Value.ToString();
+                        if (fileName == null)
+                        {
+                            return;
+                        }
+                        if (!string.IsNullOrEmpty(fileName))
+                        {
+                            // Thêm dữ liệu từ dòng đã chọn vào DataGridView khác
+                            // Ví dụ: Thêm vào dgvDestination
+                            //check có tồn tại trong folder mới này ko
+                            string destinationFilePath = Path.Combine(exportFolderPath, fileName);
+                            // Kiểm tra xem tệp đích đã tồn tại hay chưa
+                            if (File.Exists(destinationFilePath))
+                            {
+                                MessageBox.Show($"Tệp {fileName} này đã tồn tại trong folder mới.");
+                            }
+                            else
+                            {
+                                FileName file = new FileName { Name = fileName };
+                                jpgFiles2.Add(file);
+                                showTable2(jpgFiles2);
+                                dgvImport.Rows.Remove(selectedRow);
+                                jpgFiles.RemoveAll(x => x.Name == fileName);
+                                
+                            }
+
+                        }
+
+                        // (Tùy chọn) Xóa dòng đã chọn trong DataGridView nguồn
+                        
+                    }
+                    else
+                    {
+                        MessageBox.Show("Vui lòng chọn một dòng để thêm.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Vui lòng chọn một dòng để thêm.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+                
+
+            }
+            txtSearch.Text = "";
         }
 
 
