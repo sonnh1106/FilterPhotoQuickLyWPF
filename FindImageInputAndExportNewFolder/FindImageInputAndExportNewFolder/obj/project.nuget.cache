@@ -1,0 +1,12 @@
+{
+  "version": 2,
+  "dgSpecHash": "KkzKkTEh7I1Af6eCbZp+aQVfKEGGlH+NBa06HgcPx6I4fgijMPsJU93ltBv/eyXFcZ25MxMamOv3F5Jp6mzKRg==",
+  "success": true,
+  "projectFilePath": "D:\\Python\\FindImageInputAndExportNewFolder\\FindImageInputAndExportNewFolder\\FindImageInputAndExportNewFolder\\FindImageInputAndExportNewFolder.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\nguye\\.nuget\\packages\\materialdesigncolors\\2.1.4\\materialdesigncolors.2.1.4.nupkg.sha512",
+    "C:\\Users\\nguye\\.nuget\\packages\\materialdesignthemes\\4.9.0\\materialdesignthemes.4.9.0.nupkg.sha512",
+    "C:\\Users\\nguye\\.nuget\\packages\\microsoft.xaml.behaviors.wpf\\1.1.39\\microsoft.xaml.behaviors.wpf.1.1.39.nupkg.sha512"
+  ],
+  "logs": []
+}
